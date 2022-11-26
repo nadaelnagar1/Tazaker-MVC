@@ -5,11 +5,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//DbContext Configuration
+#region DbContext Configuration
 builder.Services.AddDbContext<AppDbContext>(
     options=>options.UseSqlServer(
-        builder.Configuration.GetConnectionString("conn"
-        )));
+        builder.Configuration.GetConnectionString("conn")
+        ).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+builder.Services.AddScoped<AppDbContext>();
+#endregion
+
 
 var app = builder.Build();
 
@@ -31,5 +34,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+//seed Database
+AppDbInitializer.Seed(app);
 app.Run();

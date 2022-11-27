@@ -24,30 +24,30 @@ namespace Tazaker.Data
                         new Cinema()
                         {
                             Id=new Guid("11223344-5566-7788-99AA-BBCCDDEEFF00"),
-                            Name = "VOX Cinemas City Centre Alexandria",
+                            Name = "VOX Cinema",
                             Logo = "https://media0001.elcinema.com/uploads/_310x310_9ad5cdee298cc9765c7d87bfa86556533633d9b3fe8f61b1cb43a3f1129ce0dd.jpg",
-                            Description = "The biggest blockbusters in Egypt are just one click away. Discover the perfect movie for you, find session times and book tickets at VOX Cinemas."
+                            Description = "best cinema in egypt"
                         },
                         new Cinema()
                         {
                             Id=new Guid("22223344-5566-7788-99AA-BBCCDDEEFF00"),
                             Name = "Cine Plex",
                             Logo = "https://scontent.fcai19-8.fna.fbcdn.net/v/t1.6435-9/99131992_10151481767414990_897803148758876160_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_ohc=Ve_d6VBf7BQAX_WzSwq&_nc_ht=scontent.fcai19-8.fna&oh=00_AfBtt3yCxzZ0_CHqq76xHabSFMh_6etsD9_lRsK0aZDYLA&oe=63A73A6D",
-                            Description = "Movies · Event Cinema · Buy or Rent Movies at Home with Cineplex Store!"
+                            Description = "best cinema in egypt"
                         },
                         new Cinema()
                         {
                              Id=new Guid("33223344-5566-7788-99AA-BBCCDDEEFF00"),
                             Name = "San Stefano Cinema ",
                             Logo = "https://media0001.elcinema.com/uploads/_310x310_6e1c5a3ee148ed0d65d8eb762daaa791e6f483f4a3ef1064828cccf358319ce6.jpg",
-                            Description = "Bringing your favorite movies to the big screen and giving you an unforgettable cinema experience from Cairo to Alexandria!"
+                            Description = "best cinema in egypt"
                         },
                         new Cinema()
                         {
                             Id = new Guid("44223344-5566-7788-99AA-BBCCDDEEFF00"),
                             Name = "Cinema Amir",
-                            Logo = "http://photos.cinematreasures.org/production/photos/322968/1604581267/large.jpg?1604581267",
-                            Description = "Sea cinema Amir Cinema. Foad St., Raml Station. Downtown · Alexandria · Egypt"
+                            Logo = "https://www.sffar.com/wp-content/uploads/2018/11/%D8%B3%D9%8A%D9%86%D9%85%D8%A7-%D8%A3%D9%85%D9%8A%D8%B1-2.jpg",
+                            Description = "best cinema in egypt"
                         },
                        
                     }
@@ -123,7 +123,7 @@ namespace Tazaker.Data
                           Id=new Guid("11223344-5566-7788-99AA-BBCCDDEEFF22"),
                             FullName = "Nate Moore",
                             Bio = "This is the Bio of the second producer",
-                            ProfilePictureURL = "https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9a/Nate_Moore.jpg/revision/latest/top-crop/width/360/height/360?cb=20221027164004"
+                            ProfilePictureURL = "https://m.media-amazon.com/images/M/MV5BZWEwNWZkODgtOWY1NS00ZmU0LWJhYTUtZDIyZDRhNjFjZDAzXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_.jpg"
                         },
                         new Producer()
                         {

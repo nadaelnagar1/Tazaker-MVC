@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Tazaker.Data;
+using Tazaker.Data.Services.ActorService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,9 @@ builder.Services.AddDbContext<AppDbContext>(
 builder.Services.AddScoped<AppDbContext>();
 #endregion
 
-
+#region adding services
+builder.Services.AddScoped<IActorService,ActorServices>();
+#endregion
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

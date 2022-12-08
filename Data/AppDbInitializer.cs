@@ -14,8 +14,7 @@ namespace Tazaker.Data
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
                 context.Database.EnsureCreated();
-            
-
+               
                 //Adding cinemas
                 if (!context.Cinemas.Any())
                 {
@@ -231,11 +230,69 @@ namespace Tazaker.Data
                             CinemaId = new Guid("44223344-5566-7788-99AA-BBCCDDEEFF00"),
                             ProducerId = new Guid("11223344-5566-7788-99AA-BBCCDDEEFF33"),
                             MovieCategory = MovieCategory.Drama
+                        },
+                        new Movie()
+                        {
+                            Id=new Guid("11223344-6666-7788-99AA-BBCCDDEEFF00"),
+                            Name = "The Swimmers",
+                            Description = "This is the Swimmers movie description",
+                            Price = 50.50,
+                            ImageURL = "https://media0001.elcinema.com/uploads/_320x_9795bcc6e0ea36708ba79a37bb8b60f83e36aa86d444ffd6c4a36fa032801377.jpg",
+                            StartDate = DateTime.Now.AddDays(3),
+                            EndDate = DateTime.Now.AddDays(20),
+                            CinemaId = new Guid("11223344-5566-7788-99AA-BBCCDDEEFF00"),
+                            ProducerId = new Guid("11223344-5566-7788-99AA-BBCCDDEEFF33"),
+                            MovieCategory = MovieCategory.Documentary
+                        },
+                        new Movie()
+                        {
+                            Id=new Guid("11223344-7766-7788-99AA-BBCCDDEEFF00"),
+                            Name = "Bullet Train",
+                            Description = "This is the Bullet Train movie description",
+                            Price = 39.50,
+                            ImageURL = "https://m.media-amazon.com/images/M/MV5BMDU2ZmM2OTYtNzIxYy00NjM5LTliNGQtN2JmOWQzYTBmZWUzXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+                            StartDate = DateTime.Now.AddDays(3),
+                            EndDate = DateTime.Now.AddDays(20),
+                            CinemaId = new Guid("11223344-5566-7788-99AA-BBCCDDEEFF00"),
+                            ProducerId = new Guid("11223344-5566-7788-99AA-BBCCDDEEFF33"),
+                            MovieCategory = MovieCategory.Action
                         }
                     });
                     context.SaveChanges();
                 }
-               
+
+                //Actors & Movies
+                if (!context.Actors_Movies.Any())
+                {
+                    context.Actors_Movies.AddRange(new List<Actor_Movies>()
+                    {
+                        new Actor_Movies()
+                        {
+                            ActorId =new Guid("41223344-5566-7788-99aa-bbccddeeff00"),
+                            MovieId = new Guid("11223344-0066-7788-99AA-BBCCDDEEFF00")
+                        },
+
+                         new Actor_Movies()
+                        {
+                            ActorId = new Guid("41223344-5566-7788-99cc-bbccddeeff00"),
+                            MovieId = new Guid("11223344-6666-7788-99AA-BBCCDDEEFF00")
+                        },
+                         new Actor_Movies()
+                        {
+                            ActorId = new Guid("41223344-5566-7788-99bb-bbccddeeff00"),
+                            MovieId = new Guid("11223344-7766-7788-99AA-BBCCDDEEFF00")
+                        },
+
+                        new Actor_Movies()
+                        {
+                            ActorId = new Guid("41223344-5566-7788-99ee-bbccddeeff00"),
+                            MovieId = new Guid("11223344-4466-7788-99AA-BBCCDDEEFF00")
+                        }
+                    });
+
+                    context.SaveChanges();
+                }
+
             }
         }
     }

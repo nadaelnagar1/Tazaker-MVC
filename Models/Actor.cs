@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Tazaker.Data.Repository.Generic;
 
 namespace Tazaker.Models
 {
-    public class Actor
+    public class Actor: IEntityBase
     {
         [Key]
-        public Guid? Id { get; set; }
+        public Guid Id { get; set; }
         [Display(Name ="Profile Picture")]
         [Required(ErrorMessage = "Profile Picture is required")]
         public string ProfilePictureURL { get; set; } = "";

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Tazaker.Data;
 using Tazaker.Data.Services.ActorService;
+using Tazaker.Data.Services.ProducerService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddScoped<AppDbContext>();
 
 #region adding services
 builder.Services.AddScoped<IActorService,ActorServices>();
+builder.Services.AddScoped<IProducerService, ProducerServices>();
+
 #endregion
 var app = builder.Build();
 
@@ -36,7 +39,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Movies}/{action=Index}/{id?}");
 //seed Database
 AppDbInitializer.Seed(app);
 app.Run();

@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Tazaker.Data.Repository.Generic;
 
 namespace Tazaker.Models
 {
-    public class Producer
+    public class Producer:IEntityBase
     {
         [Key]
         public Guid Id { get; set; }

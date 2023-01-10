@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Tazaker.Data;
+using Tazaker.Data.Services.ProducerService;
 
 namespace Tazaker.Controllers
 {
     public class ProducersController : Controller
     {
 
-        private readonly AppDbContext _context;
-        public ProducersController(AppDbContext context)
+        private readonly IProducerService _producerService;
+        public ProducersController(IProducerService producerService)
         {
-            _context = context;
+            _producerService = producerService;
         }
         public async Task<IActionResult> Index()
         {

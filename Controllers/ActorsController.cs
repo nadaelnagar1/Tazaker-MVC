@@ -16,7 +16,7 @@ namespace Tazaker.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var actors = await _actorServices.GetAllActors();
+            var actors = await _actorServices.GetAll();
             return View(actors);
         }
         //Get: Actors/Create
@@ -33,17 +33,59 @@ namespace Tazaker.Controllers
                 return View(actor);
             }
            
-              _actorServices.AddActorAsync(actor);
+              _actorServices.AddAsync(actor);
               return RedirectToAction("Index");
         }
 
         //Get: Actors/Details/id
         public async Task<IActionResult> Details(Guid id)
         {
-            var actorDetails =await _actorServices.GetActorByIdAsync(id);
+            var actorDetails =await _actorServices.GetByIdAsync(id);
             if (actorDetails == null)
-                return View("Not found");
+                return View("NotFound");
             return View(actorDetails);
+        }
+
+
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var actorDetails = await _actorServices.GetByIdAsync(id);
+            if (actorDetails == null)
+                return View("NotFound");
+            return View(actorDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Guid id,Actor actor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }
+
+            await _actorServices.UpdateAsync(id, actor);
+            return RedirectToAction("Index");
+        }
+
+
+
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var actorDetails = await _actorServices.GetByIdAsync(id);
+            if (actorDetails == null)
+                return View("NotFound");
+            return View(actorDetails);
+        }
+
+        [HttpPost,ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(Guid id, Actor actor)
+        {
+            var actorDetails = await _actorServices.GetByIdAsync(id);
+            if (actorDetails == null)
+                return View("NotFound");
+
+            await _actorServices.DeleteAsync(id);
+            return RedirectToAction("Index");
         }
     }
 }

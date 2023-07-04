@@ -43,6 +43,5 @@ namespace Tazaker.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
     }
 }

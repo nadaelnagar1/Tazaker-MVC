@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Tazaker.Data;
 using Tazaker.Data.Services.ActorService;
+using Tazaker.Data.Services.CinemaService;
 using Tazaker.Data.Services.ProducerService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ builder.Services.AddScoped<AppDbContext>();
 #region adding services
 builder.Services.AddScoped<IActorService,ActorServices>();
 builder.Services.AddScoped<IProducerService, ProducerServices>();
+builder.Services.AddScoped<ICinemaServices, CinemaServices>();
 
 #endregion
 var app = builder.Build();

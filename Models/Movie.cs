@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Tazaker.Data.Enums;
+using Tazaker.Data.Repository.Generic;
 
 namespace Tazaker.Models
 {
-    public class Movie
+    public class Movie :IEntityBase
     {
         [Key]
         public Guid Id { get; set; }

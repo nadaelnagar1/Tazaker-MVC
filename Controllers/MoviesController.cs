@@ -1,19 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Tazaker.Data;
+using Tazaker.Data.Services.MovieService;
 
 namespace Tazaker.Controllers
 {
     public class MoviesController : Controller
     {
-        private readonly AppDbContext _context;
-        public MoviesController(AppDbContext context)
+        private readonly IMovieServices _movieServices;
+        public MoviesController(IMovieServices movieServices)
         {
-            _context = context;
+            _movieServices = movieServices;
         }
         public async Task<IActionResult> Index()
         {
-            var movies = await _context.Movies.Include(a=>a.Cinema).OrderBy(n=>n.Name).ToListAsync();
+            var movies = await _movieServices.GetAll(n=>n.Cinema);
 
             return View(movies);
         }

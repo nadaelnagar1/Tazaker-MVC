@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Tazaker.Data;
 using Tazaker.Data.Services.MovieService;
@@ -23,6 +24,17 @@ namespace Tazaker.Controllers
         {
             var movieDetail = await _movieServices.GetMovieByIdAsync(id);
             return View(movieDetail);
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            var movies = await _movieServices.GetNewMovieDropDownVMAsync();
+
+            ViewBag.Cinemas = new SelectList(movies.Cinemas, "Id", "Name");
+            ViewBag.Producers = new SelectList(movies.Producers, "Id", "FullName");
+            ViewBag.Actors = new SelectList(movies.Actors, "Id", "FullName");
+
+            return View();
         }
 
 

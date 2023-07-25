@@ -7,7 +7,6 @@ namespace Tazaker.Data.Repository.Generic
     {
         Task<ICollection<T>> GetAll();
         Task<ICollection<T>> GetAll(params Expression<Func<T, object>>[] includeProperties);
-
         Task<T> GetByIdAsync(Guid id);
         Task AddAsync(T entity);
         Task UpdateAsync(Guid Id, T entity);

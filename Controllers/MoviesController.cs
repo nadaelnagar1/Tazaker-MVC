@@ -18,5 +18,13 @@ namespace Tazaker.Controllers
 
             return View(movies);
         }
+
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var movieDetail = await _movieServices.GetMovieByIdAsync(id);
+            return View(movieDetail);
+        }
+
+
     }
 }

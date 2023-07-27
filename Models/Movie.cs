@@ -19,11 +19,11 @@ namespace Tazaker.Models
         public ICollection<Actor_Movies> Actor_Movies { get; set; }
         public Guid CinemaId { get; set; }
         [ForeignKey("CinemaId")]
-        public Cinema? Cinema { get; set; }
+        public Cinema Cinema { get; set; }
 
         public Guid ProducerId { get; set; }
         [ForeignKey("ProducerId")]
-        public Producer? Producer { get; set; }
+        public Producer Producer { get; set; }
 
 
     }

@@ -64,12 +64,58 @@ namespace Tazaker.Data.Services.MovieService
             return response;
         }
 
+        //public async Task UpdateMovieAsync(NewMovieVM movieVM)
+        //{
+        //    var movie = await _context.Movies.FirstOrDefaultAsync(n => n.Id == movieVM.Id);
+        //    Console.WriteLine(movie.Name);
+        //    Console.WriteLine(movie.Description);
+
+
+        //    if (movie != null)
+        //    {
+
+        //        movie.Name = movieVM.Name;
+        //        movie.Description = movieVM.Description;
+        //        movie.Price = movieVM.Price;
+        //        movie.ImageURL = movieVM.ImageURL;
+        //        movie.CinemaId = movieVM.CinemaId;
+        //        movie.StartDate = movieVM.StartDate;
+        //        movie.EndDate = movieVM.EndDate;
+        //        movie.MovieCategory = movieVM.MovieCategory;
+        //        movie.ProducerId = movieVM.ProducerId;
+
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    //remove exsting actors
+        //    var existingActors = _context.Actors_Movies.Where(n => n.MovieId == movieVM.Id).ToList();
+        //    _context.Actors_Movies.RemoveRange(existingActors);
+
+        //    await _context.SaveChangesAsync();
+
+        //    //add movie actors
+
+        //    foreach (var actorId in movieVM.ActorIds)
+        //    {
+        //        var newActorMovie = new Actor_Movies()
+        //        {
+        //            MovieId = movieVM.Id,
+        //            ActorId = actorId,
+
+        //        };
+        //        await _context.Actors_Movies.AddAsync(newActorMovie);
+        //    }
+        //    await _context.SaveChangesAsync();
+
+        //    Console.WriteLine(movie.Name);
+        //    Console.WriteLine(movie.Description);
+
+        //}
+
         public async Task UpdateMovieAsync(NewMovieVM movieVM)
         {
             var movie = await _context.Movies.FirstOrDefaultAsync(n => n.Id == movieVM.Id);
             if (movie != null)
             {
-
                 movie.Name = movieVM.Name;
                 movie.Description = movieVM.Description;
                 movie.Price = movieVM.Price;
@@ -80,30 +126,28 @@ namespace Tazaker.Data.Services.MovieService
                 movie.MovieCategory = movieVM.MovieCategory;
                 movie.ProducerId = movieVM.ProducerId;
 
-                await _context.SaveChangesAsync();
+                // Remove existing actors
+                var existingActors = _context.Actors_Movies.Where(n => n.MovieId == movieVM.Id).ToList();
+                _context.Actors_Movies.RemoveRange(existingActors);
 
-            }
-
-           //remove exsting actors
-           var existingActors = _context.Actors_Movies.Where(n=>n.MovieId == movieVM.Id).ToList();
-            _context.Actors_Movies.RemoveRange(existingActors);
-
-            await _context.SaveChangesAsync();
-
-            //add movie actors
-
-            foreach (var actorId in movieVM.ActorIds)
-            {
-                var newActorMovie = new Actor_Movies()
+                // Add movie actors
+                foreach (var actorId in movieVM.ActorIds)
                 {
-                    MovieId = movieVM.Id,
-                    ActorId = actorId, 
+                    var newActorMovie = new Actor_Movies()
+                    {
+                        MovieId = movieVM.Id,
+                        ActorId = actorId
+                    };
+                    await _context.Actors_Movies.AddAsync(newActorMovie);
+                }
+                _context.Entry(movie).State = EntityState.Modified;
 
-                };
-                await _context.Actors_Movies.AddAsync(newActorMovie);
+                await _context.SaveChangesAsync(); // Save all changes here
+                var entry = _context.Entry(movie);
+                Console.WriteLine("************************************************************");
+                Console.WriteLine(entry.State); // should output Modified
             }
-            await _context.SaveChangesAsync();
-
         }
+
     }
 }

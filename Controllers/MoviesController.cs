@@ -80,9 +80,9 @@ namespace Tazaker.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Guid id, NewMovieVM movie)
         {
+            
+
             if (id != movie.Id) return View("NotFound");
-
-
 
             if (!ModelState.IsValid)
             {
@@ -96,6 +96,7 @@ namespace Tazaker.Controllers
             }
             await _movieServices.UpdateMovieAsync(movie);
             return RedirectToAction(nameof(Index));
+           
         }
     }
 }

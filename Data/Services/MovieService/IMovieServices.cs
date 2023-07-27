@@ -8,5 +8,8 @@ namespace Tazaker.Data.Services.MovieService
     {
         Task<Movie> GetMovieByIdAsync(Guid id);
         Task<NewMovieDropDownVM> GetNewMovieDropDownVMAsync();
+        Task AddNewMovie(NewMovieVM movieVM);
+        Task UpdateMovieAsync( NewMovieVM movieVM);
+
     }
 }

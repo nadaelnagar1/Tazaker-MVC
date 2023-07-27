@@ -5,6 +5,9 @@ namespace Tazaker.Models
 {
     public class NewMovieVM
     {
+
+        public Guid Id { get; set; }
+
         [Display(Name = "Movie name")]
         [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; } = "";

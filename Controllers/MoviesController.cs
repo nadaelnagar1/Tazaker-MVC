@@ -21,6 +21,17 @@ namespace Tazaker.Controllers
             return View(movies);
         }
 
+        public async Task<IActionResult> Filter( string searchString)
+        {
+            var movies = await _movieServices.GetAll(n => n.Cinema);
+            if (!string.IsNullOrEmpty(searchString)) 
+            {
+                var result = movies.Where(n=>n.Name.ToLower().Contains(searchString.ToLower()) || n.Description.ToLower().Contains(searchString.ToLower())).ToList();
+                return View("Index",result);
+            }
+            return View("Index", movies);
+        }
+
         public async Task<IActionResult> Details(Guid id)
         {
             var movieDetail = await _movieServices.GetMovieByIdAsync(id);
